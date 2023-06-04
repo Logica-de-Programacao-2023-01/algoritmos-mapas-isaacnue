@@ -1,0 +1,28 @@
+package main
+
+import (
+	"fmt"
+	"sort"
+	"strings"
+)
+
+func main() {
+	palavras := []string{"amor", "roma", "maro", "rato", "arte", "tare"}
+	resultado := agruparAnagramas(palavras)
+	fmt.Println("Grupos de anagramas:", resultado)
+}
+
+func agruparAnagramas(palavras []string) map[string][]string {
+	resultado := make(map[string][]string)
+	for _, palavra := range palavras {
+		key := sortString(palavra)
+		resultado[key] = append(resultado[key], palavra)
+	}
+	return resultado
+}
+
+func sortString(s string) string {
+	slice := strings.Split(s, "")
+	sort.Strings(slice)
+	return strings.Join(slice, "")
+}
