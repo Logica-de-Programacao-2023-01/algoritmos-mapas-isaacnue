@@ -1,0 +1,23 @@
+package main
+
+import "fmt"
+
+func main() {
+	textos := []map[string]int{
+		{"a": 1, "b": 2, "c": 3},
+		{"b": 4, "c": 5, "d": 6},
+		{"c": 7, "d": 8, "e": 9},
+	}
+	resultado := somarContagens(textos)
+	fmt.Println("Contagem total:", resultado)
+}
+
+func somarContagens(textos []map[string]int) map[string]int {
+	resultado := make(map[string]int)
+	for _, texto := range textos {
+		for chave, valor := range texto {
+			resultado[chave] += valor
+		}
+	}
+	return resultado
+}
