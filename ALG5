@@ -1,0 +1,20 @@
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	frase := "Hello, World!"
+	resultado := contarCaracteres(frase)
+	fmt.Println("Frequência de caracteres:", resultado)
+}
+
+func contarCaracteres(frase string) map[string]int {
+	frequencia := make(map[string]int)
+	for _, char := range frase {
+		frequencia[string(char)]++
+	}
+	return frequencia
+}
