@@ -1,0 +1,27 @@
+package main
+
+import "fmt"
+
+func main() {
+	despesas := map[string]float64{
+		"João":  50.0,
+		"Maria": 30.0,
+		"Pedro": 20.0,
+		"Ana":   40.0,
+	}
+	resultado := calcularSaldo(despesas)
+	fmt.Println("Saldo das pessoas:", resultado)
+}
+
+func calcularSaldo(despesas map[string]float64) map[string]float64 {
+	saldoTotal := 0.0
+	for _, valor := range despesas {
+		saldoTotal += valor
+	}
+	saldoPorPessoa := saldoTotal / float64(len(despesas))
+	resultado := make(map[string]float64)
+	for pessoa, valor := range despesas {
+		resultado[pessoa] = saldoPorPessoa - valor
+	}
+	return resultado
+}
