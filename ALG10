@@ -1,0 +1,24 @@
+package main
+
+import (
+	"fmt"
+	"sort"
+)
+
+func main() {
+	numeros := []int{1, 2, 2, 3, 3, 3, 4, 4, 4, 4}
+	resultado := contarPares(numeros)
+	fmt.Println("Frequência de pares:", resultado)
+}
+
+func contarPares(numeros []int) map[string]int {
+	resultado := make(map[string]int)
+	sort.Ints(numeros)
+	for i := 0; i < len(numeros)-1; i++ {
+		for j := i + 1; j < len(numeros); j++ {
+			pair := fmt.Sprintf("%d,%d", numeros[i], numeros[j])
+			resultado[pair]++
+		}
+	}
+	return resultado
+}
