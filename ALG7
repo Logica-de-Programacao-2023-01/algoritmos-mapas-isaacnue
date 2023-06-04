@@ -1,0 +1,25 @@
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	frase := "O rato roeu a roupa do rei de Roma"
+	resultado := contarLetras(frase)
+	fmt.Println("Frequência de letras:", resultado)
+}
+
+func contarLetras(frase string) map[string]map[string]int {
+	resultado := make(map[string]map[string]int)
+	palavras := strings.Fields(frase)
+	for _, palavra := range palavras {
+		frequencia := make(map[string]int)
+		for _, char := range palavra {
+			frequencia[string(char)]++
+		}
+		resultado[palavra] = frequencia
+	}
+	return resultado
+}
